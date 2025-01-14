@@ -40,7 +40,7 @@ const AdminSidebar = () => {
           </li>
           <li>
             <NavLink
-              to="/admin/customers"
+              to="/admin/users"
               className={({ isActive }) => (isActive ? "active" : "")}
             >
               <FontAwesomeIcon icon={faUsers} className="sidebar-icon" />
@@ -58,7 +58,7 @@ const AdminSidebar = () => {
           </li>
           <li>
             <NavLink
-              to="/admin/artists"
+              to="/admin/reports"
               className={({ isActive }) => (isActive ? "active" : "")}
             >
               <FontAwesomeIcon icon={faFire} className="sidebar-icon" />
@@ -67,7 +67,7 @@ const AdminSidebar = () => {
           </li>
           <li>
             <NavLink
-              to="/admin/artists"
+              to="/admin/donations"
               className={({ isActive }) => (isActive ? "active" : "")}
             >
               <FontAwesomeIcon icon={faDonate} className="sidebar-icon" />

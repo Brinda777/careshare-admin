@@ -48,15 +48,10 @@ export const updateEventApi = (id, data) =>
   Api.patch(`/event/${id}`, data, getHeaders());
 export const deleteEventApi = (id) => Api.delete(`/event/${id}`, getHeaders());
 
-// Artists
-export const addArtistApi = (data) => Api.post(`/artist`, data, getHeaders());
-export const updateArtistApi = (id, data) =>
-  Api.patch(`/artist/${id}`, data, getHeaders());
-export const deleteArtistApi = (id) =>
-  Api.delete(`/artist/${id}`, getHeaders());
+// Reports
+export const getReportsApi = () => Api.get(`/report`, getHeaders());
+export const deleteReportApi = (id) => Api.delete(`/report/${id}`, getHeaders());
 
-// Genres
-export const addGenreApi = (data) => Api.post(`/genre`, data, getHeaders());
-export const updateGenreApi = (id, data) =>
-  Api.patch(`/genre/${id}`, data, getHeaders());
-export const deleteGenreApi = (id) => Api.delete(`/genre/${id}`, getHeaders());
+
+// Donations
+export const getDonationsApi = () => Api.get(`/donation`, getHeaders());

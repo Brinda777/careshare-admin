@@ -13,7 +13,7 @@ const AdminCustomer = () => {
   useEffect(() => {
     getCustomersApi()
       .then((res) => {
-        setCustomers(res.data.data.users);
+        setCustomers(res.data.data);
       })
       .catch((err) => {});
   }, []);
@@ -56,7 +56,7 @@ const AdminCustomer = () => {
       <div className="customer-table-content">
         <header className="header">
           <div className="header-top">
-            <h1>Customer List</h1>
+            <h1>User List</h1>
             <div className="header-actions">
               <input
                 type="text"
@@ -65,7 +65,7 @@ const AdminCustomer = () => {
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="search-bar"
               />
-              <button className="btn-add">Add</button>
+              {/* <button className="btn-add">Add</button> */}
             </div>
           </div>
         </header>
@@ -75,24 +75,25 @@ const AdminCustomer = () => {
               <tr>
                 <th onClick={() => requestSort("id")}>ID</th>
                 <th>Image</th>
+                <th onClick={() => requestSort("fullName")}>Full Name</th>
+                <th onClick={() => requestSort("phone")}>Phone</th>
                 <th onClick={() => requestSort("email")}>Email</th>
-                <th onClick={() => requestSort("firstName")}>First Name</th>
-                <th onClick={() => requestSort("lastName")}>Last Name</th>
                 <th onClick={() => requestSort("gender")}>Gender</th>
-                <th>Actions</th>
+                <th onClick={() => requestSort("address")}>Address</th>
+                {/* <th>Actions</th> */}
               </tr>
             </thead>
             <tbody>
               {sortedCustomers
                 .slice(indexOfFirstItem, indexOfLastItem)
                 .map((customer) => (
-                  <tr key={customer._id}>
-                    <td>{customer._id}</td>
+                  <tr key={customer.id}>
+                    <td>{customer.id}</td>
                     <td>
                       <img
                         height={50}
                         width={50}
-                        src={`${process.env.REACT_APP_BACKEND_IMAGE_BASE_URL}${customer.imageUrl}`}
+                        src={`${process.env.REACT_APP_BACKEND_IMAGE_BASE_URL}${customer.profileImage}`}
                         alt=""
                         srcset=""
                         onError={({ currentTarget }) => {
@@ -103,16 +104,17 @@ const AdminCustomer = () => {
                         style={{ objectFit: "cover" }}
                       />{" "}
                     </td>
+                    <td>{customer.fullName}</td>
+                    <td>{customer.phone}</td>
                     <td>{customer.email}</td>
-                    <td>{customer.firstName}</td>
-                    <td>{customer.lastName}</td>
                     <td>{customer.gender}</td>
-                    <td>
+                    <td>{customer.address}</td>
+                    {/* <td>
                       <div className="actions">
                         <button className="btn-edit">Edit</button>
                         <button className="btn-delete">Delete</button>
                       </div>
-                    </td>
+                    </td> */}
                   </tr>
                 ))}
             </tbody>
