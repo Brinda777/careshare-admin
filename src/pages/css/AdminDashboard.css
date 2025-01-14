@@ -93,6 +93,40 @@
   box-shadow: 0 0 0 2px #8E4585;
 }
 
+/* Styles for Random Analytics Section */
+.dashboard-analytics {
+  margin: 20px 0;
+}
+
+.chart-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.chart-container {
+  flex: 1 1 calc(33.33% - 20px);
+  /* Adjust size for 3 charts per row */
+  max-width: calc(33.33% - 20px);
+  /* Ensure the chart doesn't stretch */
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+}
+
+.chart-container h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+canvas {
+  max-height: 200px;
+  /* Limit chart height */
+}
+
 /* Responsive adjustments */
 @media (max-width: 1024px) {
   .dashboard {
