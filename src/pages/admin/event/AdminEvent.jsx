@@ -2,38 +2,38 @@ import React, { useEffect, useState } from "react";
 import "../../css/AdminCustomer.css";
 import AdminSidebar from "../../../components/AdminSidebar";
 import {
-  addSongApi,
-  deleteSongApi,
-  getSongsApi,
-  updateSongApi,
+  addEventApi,
+  deleteEventApi,
+  getEventsApi,
+  updateEventApi,
 } from "../../../apis/Api";
-import SongModal from "../../../components/SongModal";
+import EventModal from "../../../components/EventModal";
 import { toast } from "react-toastify";
 
-const AdminSong = () => {
+const AdminEvent = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(5); // Number of items per page
   const [sortConfig, setSortConfig] = useState({ key: "id", direction: "asc" });
-  const [songs, setSongs] = useState([]);
+  const [events, setEvents] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
-  const [editSong, setEditSong] = useState(null);
+  const [editEvent, setEditEvent] = useState(null);
 
   useEffect(() => {
-    getSongsApi(currentPage)
+    getEventsApi(currentPage)
       .then((res) => {
-        setSongs(res.data.data.song);
+        setEvents(res.data.data);
       })
       .catch((err) => {});
   }, []);
 
   const handleAddClick = () => {
-    setEditSong(null);
+    setEditEvent(null);
     setModalOpen(true);
   };
 
-  const handleEditClick = (song) => {
-    setEditSong(song);
+  const handleEditClick = (event) => {
+    setEditEvent(event);
     setModalOpen(true);
   };
 
@@ -42,27 +42,27 @@ const AdminSong = () => {
   };
 
   const handleSubmit = (formData) => {
-    if (editSong) {
-      // Update existing song
-      updateSongApi(editSong._id, formData)
+    if (editEvent) {
+      // Update existing event
+      updateEventApi(editEvent.id, formData)
         .then(() => {
-          // Refetch or update the songs list
-          toast.success("Song has been updated.");
+          // Refetch or update the events list
+          toast.success("Event has been updated.");
           setModalOpen(false);
         })
         .catch((err) => {
-          toast.error("Song was not updated.");
+          toast.error("Event was not updated.");
         });
     } else {
-      // Add new song
-      addSongApi(formData)
-        .then(() => {
-          // Refetch or update the songs list
-          toast.success("Song has been added.");
+      // Add new event
+      addEventApi(formData)
+        .then((res) => {
+          // Refetch or update the events list
+          toast.success("Event has been added.");
           setModalOpen(false);
         })
         .catch((err) => {
-          toast.error("Song was not added.");
+          toast.error("Event was not added.");
         });
     }
   };
@@ -70,27 +70,27 @@ const AdminSong = () => {
   const handleDelete = (id) => {
     const confirmDialog = window.confirm("Are you sure want to delete?");
     if (confirmDialog) {
-      deleteSongApi(id)
+      deleteEventApi(id)
         .then((res) => {
-          toast.success("Song has been deleted.");
+          toast.success("Event has been deleted.");
         })
         .catch((err) => {
-          toast.error("Song was not deleted.");
+          toast.error("Event was not deleted.");
         });
     }
   };
 
-  const filteredSongs = songs.filter((song) =>
-    song.title.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredEvents = events.filter((event) =>
+    event.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = filteredSongs.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = filteredEvents.slice(indexOfFirstItem, indexOfLastItem);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
-  const sortedSongs = [...filteredSongs].sort((a, b) => {
+  const sortedEvents = [...filteredEvents].sort((a, b) => {
     if (a[sortConfig.key] < b[sortConfig.key]) {
       return sortConfig.direction === "asc" ? -1 : 1;
     }
@@ -114,11 +114,11 @@ const AdminSong = () => {
       <div className="customer-table-content">
         <header className="header">
           <div className="header-top">
-            <h1>Song List</h1>
+            <h1>Event List</h1>
             <div className="header-actions">
               <input
                 type="text"
-                placeholder="Search by song title"
+                placeholder="Search by event title"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="search-bar"
@@ -133,30 +133,30 @@ const AdminSong = () => {
           <table className="customer-table">
             <thead>
               <tr>
-                <th onClick={() => requestSort("_id")}>ID</th>
+                <th onClick={() => requestSort("id")}>ID</th>
                 <th>Image</th>
                 <th onClick={() => requestSort("title")}>Title</th>
-                <th onClick={() => requestSort("artist")}>Artist</th>
-                <th onClick={() => requestSort("genre")}>Genre</th>
-                <th onClick={() => requestSort("favoriteCount")}>
-                  Favorite Count
+                <th onClick={() => requestSort("description")}>Description</th>
+                <th onClick={() => requestSort("impact")}>Impact</th>
+                <th onClick={() => requestSort("disaster")}>
+                  Disaster
                 </th>
-                <th onClick={() => requestSort("playCount")}>Play Count</th>
+                <th onClick={() => requestSort("location")}>Location</th>
 
                 <th>Actions</th>
               </tr>
             </thead>
             <tbody>
-              {sortedSongs
+              {sortedEvents
                 .slice(indexOfFirstItem, indexOfLastItem)
-                .map((song) => (
-                  <tr key={song._id}>
-                    <td>{song._id}</td>
+                .map((event) => (
+                  <tr key={event.id}>
+                    <td>{event.id}</td>
                     <td>
                       <img
                         height={50}
                         width={50}
-                        src={`${process.env.REACT_APP_BACKEND_IMAGE_BASE_URL}${song.imageUrl}`}
+                        src={`${process.env.REACT_APP_BACKEND_IMAGE_BASE_URL}${event.image}`}
                         alt=""
                         srcset=""
                         onError={({ currentTarget }) => {
@@ -167,21 +167,21 @@ const AdminSong = () => {
                         style={{ objectFit: "cover" }}
                       />{" "}
                     </td>
-                    <td>{song.title}</td>
-                    <td>{song.artist}</td>
-                    <td>{song.genre}</td>
-                    <td>{song.favoriteCount}</td>
-                    <td>{song.playCount}</td>
+                    <td>{event.title}</td>
+                    <td>{event.description}</td>
+                    <td>{event.impact}</td>
+                    <td>{event.disaster}</td>
+                    <td>{event.location}</td>
                     <td>
                       <div className="actions">
                         <button
                           className="btn-edit"
-                          onClick={() => handleEditClick(song)}
+                          onClick={() => handleEditClick(event)}
                         >
                           Edit
                         </button>
                         <button
-                          onClick={() => handleDelete(song._id)}
+                          onClick={() => handleDelete(event.id)}
                           className="btn-delete"
                         >
                           Delete
@@ -195,7 +195,7 @@ const AdminSong = () => {
         </div>
         <div className="pagination">
           {Array.from(
-            { length: Math.ceil(filteredSongs.length / itemsPerPage) },
+            { length: Math.ceil(filteredEvents.length / itemsPerPage) },
             (_, index) => (
               <button
                 key={index + 1}
@@ -210,14 +210,14 @@ const AdminSong = () => {
           )}
         </div>
       </div>
-      <SongModal
+      <EventModal
         isOpen={modalOpen}
         onClose={handleCloseModal}
         onSubmit={handleSubmit}
-        song={editSong}
+        event={editEvent}
       />
     </div>
   );
 };
 
-export default AdminSong;
+export default AdminEvent;

@@ -55,7 +55,6 @@ const Login = () => {
       const res = await loginUserApi(data);
 
       if (res.status !== 201) {
-        console.log('-----')
         toast.error(res.data?.message);
       } else {
         toast.success("Login Successful");
@@ -65,7 +64,7 @@ const Login = () => {
       }
     } catch (err) {
       toast.error(
-        err?.response?.status === 401 ? "Unauthorized" : "An error occurred"
+        err?.response?.status === 401 ? "Unauthorized" : err.response?.data?.message
       );
     }
   };
@@ -79,7 +78,7 @@ const Login = () => {
           <div className="row justify-content-center">
             <div className="col-md-6 image-container p-4">
               <img
-                src="assets/images/auth.png"
+                src="assets/images/auth.jpg"
                 className="rounded img-fluid"
                 alt="Main"
               />

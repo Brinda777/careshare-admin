@@ -41,11 +41,12 @@ export const updateUserApi = (data) =>
 // ** ==================== Admins API ======================== ** //
 export const getCustomersApi = () => Api.get(`/user`, getHeaders());
 
-// Songs
-export const addSongApi = (data) => Api.post(`/song`, data, getHeaders());
-export const updateSongApi = (id, data) =>
-  Api.patch(`/song/${id}`, data, getHeaders());
-export const deleteSongApi = (id) => Api.delete(`/song/${id}`, getHeaders());
+// Events
+export const getEventsApi = () => Api.get(`/event`, getHeaders());
+export const addEventApi = (data) => Api.post(`/event`, data, getHeaders());
+export const updateEventApi = (id, data) =>
+  Api.patch(`/event/${id}`, data, getHeaders());
+export const deleteEventApi = (id) => Api.delete(`/event/${id}`, getHeaders());
 
 // Artists
 export const addArtistApi = (data) => Api.post(`/artist`, data, getHeaders());

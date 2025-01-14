@@ -27,14 +27,14 @@
   height: 50px;
   border-radius: 50%;
   margin-right: 15px;
-  border: 2px solid #007bff; /* Border color for profile picture */
+  border: 2px solid #8E4585; /* Border color for profile picture */
 }
 
 .profile-name {
   margin: 0;
   font-size: 1.2rem;
   font-weight: bold;
-  color: #007bff; /* Highlight color for profile name */
+  color: #8E4585; /* Highlight color for profile name */
 }
 
 .sidebar-nav ul {
@@ -58,14 +58,43 @@
 
 .sidebar-nav a:hover {
   background-color: #e9ecef; /* Light background on hover */
-  color: #007bff; /* Highlight color on hover */
+  color: #8E4585; /* Highlight color on hover */
 }
 
 .sidebar-nav a.active {
-  color: #007bff; /* Text color for active link */
+  color: #8E4585; /* Text color for active link */
 }
 
 .sidebar-icon {
   margin-right: 15px;
   font-size: 1.3rem;
+}
+
+.logout-button {
+  color: #333333;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.logout-button:hover {
+  background-color: #e9ecef;
+  /* Hover background to match link hover */
+  color: #8E4585;
+  /* Highlight text color on hover */
+}
+
+.logout-button:active {
+  background-color: #d6d8db;
+  /* Slightly darker hover effect on click */
+}
+
+.logout-button .sidebar-icon {
+  margin-right: 15px;
+  /* Ensure icon aligns well */
+  font-size: 1.3rem;
+  /* Match the icon size with links */
 }

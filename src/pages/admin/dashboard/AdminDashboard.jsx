@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "../../css/AdminDashboard.css";
 import AdminSidebar from "../../../components/AdminSidebar";
-import {
-  getArtistsApi,
-  getCustomersApi,
-  getGenresApi,
-  getSongsApi,
-} from "../../../apis/Api";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAmbulance, faDonate, faFire, faUsers } from "@fortawesome/free-solid-svg-icons";
+// import {
+//   getArtistsApi,
+//   getCustomersApi,
+//   getGenresApi,
+//   getSongsApi,
+// } from "../../../apis/Api";
 
 const AdminDashboard = () => {
   const [songsCount, setSongsCount] = useState(0);
@@ -15,34 +17,34 @@ const AdminDashboard = () => {
   const [genresCount, setGenresCount] = useState(0);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    const fetchArtistsAndGenres = async () => {
-      try {
-        const [
-          artistsResponse,
-          genresResponse,
-          customersResponse,
-          songsResponse,
-        ] = await Promise.all([
-          getArtistsApi(),
-          getGenresApi(),
-          getCustomersApi(),
-          getSongsApi(1),
-        ]);
-        setArtistsCount(artistsResponse.data.data.artist.length);
-        setGenresCount(genresResponse.data.data.genre.length);
-        setSongsCount(songsResponse.data.data.song.length);
-        setUsersCount(customersResponse.data.data.users.length);
-      } catch (err) {
-        console.error("Error fetching data:", err);
-        setError(
-          "An error occurred while fetching data. Please try again later."
-        );
-      }
-    };
+  // useEffect(() => {
+  //   const fetchArtistsAndGenres = async () => {
+  //     try {
+  //       const [
+  //         artistsResponse,
+  //         genresResponse,
+  //         customersResponse,
+  //         songsResponse,
+  //       ] = await Promise.all([
+  //         getArtistsApi(),
+  //         getGenresApi(),
+  //         getCustomersApi(),
+  //         getSongsApi(1),
+  //       ]);
+  //       setArtistsCount(artistsResponse.data.data.artist.length);
+  //       setGenresCount(genresResponse.data.data.genre.length);
+  //       setSongsCount(songsResponse.data.data.song.length);
+  //       setUsersCount(customersResponse.data.data.users.length);
+  //     } catch (err) {
+  //       console.error("Error fetching data:", err);
+  //       setError(
+  //         "An error occurred while fetching data. Please try again later."
+  //       );
+  //     }
+  //   };
 
-    fetchArtistsAndGenres();
-  }, []);
+  //   fetchArtistsAndGenres();
+  // }, []);
 
   return (
     <div className="dashboard">
@@ -56,28 +58,35 @@ const AdminDashboard = () => {
           <div className="dashboard-card">
             <div className="dashboard-card-header">
               <h3>Total Users</h3>
-              <span className="dashboard-card-icon">👤</span>
+              <span className="dashboard-card-icon">
+                <FontAwesomeIcon icon={faUsers} className="sidebar-icon" />
+              </span>
             </div>
             <p className="dashboard-card-value">{usersCount}</p>
           </div>
           <div className="dashboard-card">
             <div className="dashboard-card-header">
-              <h3>Songs</h3>
-              <span className="dashboard-card-icon">🎵</span>
+              <h3>Events</h3>
+              <span className="dashboard-card-icon">
+                <FontAwesomeIcon icon={faAmbulance} className="sidebar-icon" /></span>
             </div>
             <p className="dashboard-card-value">{songsCount}</p>
           </div>
           <div className="dashboard-card">
             <div className="dashboard-card-header">
-              <h3>Artists</h3>
-              <span className="dashboard-card-icon">🎤</span>
+              <h3>Reports</h3>
+              <span className="dashboard-card-icon">
+                <FontAwesomeIcon icon={faFire} className="sidebar-icon" />
+              </span>
             </div>
             <p className="dashboard-card-value">{artistsCount}</p>
           </div>
           <div className="dashboard-card">
             <div className="dashboard-card-header">
-              <h3>Genres</h3>
-              <span className="dashboard-card-icon">📚</span>
+              <h3>Event Engagements</h3>
+              <span className="dashboard-card-icon">
+                <FontAwesomeIcon icon={faDonate} className="sidebar-icon" />
+              </span>
             </div>
             <p className="dashboard-card-value">{genresCount}</p>
           </div>

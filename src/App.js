@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Admin from './pages/admin/Admin';
 import Login from './pages/authentication/Login';
 import ProtectedRoute from './utils/ProtectedRoutes';
 import { ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import AdminDashboard from './pages/admin/dashboard/AdminDashboard';
+import AdminEvent from './pages/admin/event/AdminEvent';
 
 function App() {
   return (
@@ -15,7 +16,15 @@ function App() {
           path="/"
           element={
             <ProtectedRoute>
-              <Admin />
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/events"
+          element={
+            <ProtectedRoute>
+              <AdminEvent />
             </ProtectedRoute>
           }
         />
