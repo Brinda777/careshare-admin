@@ -16,10 +16,9 @@ This project is the **Admin Panel** for the **CareShareNepal** platform. It was 
 
 Ensure that you have **Node.js** and **npm** installed on your machine.
 
-### `npm start`
+### Installation:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+To install the required dependencies, run:
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
