@@ -12,6 +12,8 @@ This project is the **Admin Panel** for the **CareShareNepal** platform. It was 
     
 ## 🚀 **Getting Started**
 
+### Prerequisites:
+
 ### `npm start`
 
 Runs the app in the development mode.\
