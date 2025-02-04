@@ -28,6 +28,5 @@ To install the required dependencies, run:
 
 
 
-Your app is ready to be deployed!
 
 
