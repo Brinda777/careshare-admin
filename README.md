@@ -23,6 +23,11 @@ To install the required dependencies, run:
 ```bash
 $ npm install
 
+### Start Development Server:
+
+```bash
+$ npm start
+
 
 
 
