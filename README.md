@@ -14,6 +14,8 @@ This project is the **Admin Panel** for the **CareShareNepal** platform. It was 
 
 ### Prerequisites:
 
+Ensure that you have **Node.js** and **npm** installed on your machine.
+
 ### `npm start`
 
 Runs the app in the development mode.\
