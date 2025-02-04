@@ -2,7 +2,7 @@
 
 This project is the **Admin Panel** for the **CareShareNepal** platform. It was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). The admin panel provides essential tools and features to manage and oversee disaster relief coordination efforts in Nepal.
 
----
+
 ## 📋 **Features**
 - Manage ongoing disaster campaigns and reports.
 - Approve or reject user-submitted disaster reports.
