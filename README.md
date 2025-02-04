@@ -26,8 +26,7 @@ To install the required dependencies, run:
 
 
 
-
-It correctly bundles React in production mode and optimizes the build for the best performance.
+duction mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
