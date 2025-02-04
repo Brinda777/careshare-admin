@@ -20,7 +20,8 @@ Ensure that you have **Node.js** and **npm** installed on your machine.
 
 To install the required dependencies, run:
 
-
+```bash
+$ npm install
 
 
 
