@@ -10,9 +10,7 @@ This project is the **Admin Panel** for the **CareShareNepal** platform. It was 
 - Send notifications to users regarding disaster updates.
 - Integrate with payment and logistics services.
     
-## Available Scripts
-
-In the project directory, you can run:
+## 🚀 **Getting Started**
 
 ### `npm start`
 
