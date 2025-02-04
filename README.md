@@ -4,7 +4,9 @@ This project is the **Admin Panel** for the **CareShareNepal** platform. It was 
 
 ---
 ## 📋 **Features**
+- Manage ongoing disaster campaigns and reports.
 
+  
 ## Available Scripts
 
 In the project directory, you can run:
