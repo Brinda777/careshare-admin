@@ -6,6 +6,7 @@ This project is the **Admin Panel** for the **CareShareNepal** platform. It was 
 ## 📋 **Features**
 - Manage ongoing disaster campaigns and reports.
 - Approve or reject user-submitted disaster reports.
+- Track and update donations, volunteers, and campaigns in real-time.
   
 ## Available Scripts
 
