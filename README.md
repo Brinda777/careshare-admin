@@ -24,13 +24,14 @@ To install the required dependencies, run:
 $ npm install
 
 ```
-
 ---
+
 ### Start Development Server:
 
 ```bash
 $ npm start
 
+```
 ----
 
 ### Run tests:
@@ -38,6 +39,7 @@ $ npm start
 ```bash
 $ npm test
 
+```
 
 
 
