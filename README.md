@@ -20,8 +20,7 @@ Ensure that you have **Node.js** and **npm** installed on your machine.
 
 To install the required dependencies, run:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+
 
 ### `npm test`
 
